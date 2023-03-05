@@ -1,0 +1,73 @@
+<div class="container" [ngClass]="isDark ? 'dark' : 'light'">
+  <div class="filter-search-container">
+    <div class="search-group">
+      <input
+        type="text"
+        [(ngModel)]="entrySearch"
+        pattern="^[a-zA-Zàéèç ]{1,}$"
+        #input="ngModel"
+        placeholder="Search for a country…"
+        (input)="onInputChange()"
+        [style.outline-color]="input.valid ? 'green' : 'red'"
+        class="input"
+      />
+      <span class="icon"><i class="bi bi-search text"></i></span>
+      <ul class="resultat-search">
+        <li
+          class="element"
+          *ngFor="let country of searchList"
+          (click)="handleShowFindedCountry(country)"
+        >
+          <span>{{ country.name }}</span>
+          <img [src]="country.flag" alt="" />
+        </li>
+      </ul>
+    </div>
+    <div class="filter-group">
+      <h3 class="title element" (click)="handleToggleMenu()">
+        Filter by Region <i class="bi bi-chevron-down"></i>
+      </h3>
+      <ul class="element" *ngIf="showMenuFilterRegion">
+        <li
+          [id]="region.id"
+          *ngFor="let region of regionList"
+          (click)="handleSelectedRegion(region.id)"
+        >
+          {{ region.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="cards-countries-container">
+    <div class="card-wrapper" *ngFor="let country of countryLis">
+      <div class="card element" (click)="gotoDetailCountry(country)">
+        <div class="card__image"><img [src]="country.flags.svg" alt="" /></div>
+        <div class="card__description">
+          <h2 class="title">{{ country.name }}</h2>
+          <span
+            ><span class="name">Population:</span
+            ><span class="value">{{
+              formatNumber(country.population)
+            }}</span></span
+          >
+          <span
+            ><span class="name">Region:</span
+            ><span class="value">{{ country.region }}</span></span
+          >
+          <span
+            ><span class="name">Capital:</span
+            ><span class="value">{{ country.capital }}</span></span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Goto Top-->
+  <span class="goto-top" id="btnGotop"
+    ><i
+      class="bi bi-play-circle-fill"
+      [style.color]="isDark ? '#ffff' : '#111517'"
+    ></i
+  ></span>
+</div>

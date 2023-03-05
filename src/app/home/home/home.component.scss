@@ -1,0 +1,19 @@
+@import "../../utilities/style";
+
+.container {
+  display: flex;
+  justify-content: center;
+
+  .wrapper {
+    width: $desktop;
+    min-height: 100vh;
+  }
+
+  &.dark {
+    @include dark;
+  }
+
+  &.light {
+    @include light;
+  }
+}

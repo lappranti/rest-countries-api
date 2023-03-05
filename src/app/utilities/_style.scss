@@ -1,0 +1,80 @@
+//## Fonction toRem
+
+@function toRem($type) {
+  @return calc($type / 16) * 1rem;
+}
+
+//## Layout
+
+$mobile: toRem(400);
+$desktop: toRem(1440);
+
+//## Colors
+
+//## Neutral
+
+$Dark-Blue-Dark-Mode-Elements: hsl(209, 23%, 22%);
+$Very-Dark-Blue-Dark-Mode-Background: hsl(207, 26%, 17%);
+$Very-Dark-Blue-Light-Mode-Text: hsl(200, 15%, 8%);
+$Dark-Gray-Light-Mode-Input: hsl(0, 0%, 52%);
+$Very-Light-Gray-Light-Mode-Background: hsl(0, 0%, 98%);
+$White-Dark-Mode-Text-Light-Mode-Elements: hsl(0, 0%, 100%);
+
+//## Typography
+
+//### Body Copy
+
+$Homepage-Items: 14px;
+$Detail-Page: 16px;
+
+//### Fonts
+
+$weight300: 300;
+$weight600: 600;
+$weight800: 800;
+
+@mixin dark {
+  background-color: $Very-Dark-Blue-Dark-Mode-Background;
+  transition: all 0.4s ease-in;
+
+  .element {
+    background-color: $Dark-Blue-Dark-Mode-Elements;
+    color: $White-Dark-Mode-Text-Light-Mode-Elements;
+  }
+
+  .input {
+    background-color: $Dark-Blue-Dark-Mode-Elements;
+    color: $White-Dark-Mode-Text-Light-Mode-Elements;
+
+    &::placeholder {
+      color: $White-Dark-Mode-Text-Light-Mode-Elements;
+    }
+  }
+
+  .text {
+    color: $White-Dark-Mode-Text-Light-Mode-Elements;
+  }
+}
+
+@mixin light {
+  background-color: $Very-Light-Gray-Light-Mode-Background;
+  transition: all 0.4s ease-in;
+
+  .element {
+    background-color: $White-Dark-Mode-Text-Light-Mode-Elements;
+    color: $Very-Dark-Blue-Light-Mode-Text;
+  }
+
+  .input {
+    background-color: $White-Dark-Mode-Text-Light-Mode-Elements;
+    color: $Dark-Gray-Light-Mode-Input;
+
+    &::placeholder {
+      color: $Dark-Gray-Light-Mode-Input;
+    }
+  }
+
+  .text {
+    color: $Very-Dark-Blue-Light-Mode-Text;
+  }
+}

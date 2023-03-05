@@ -1,0 +1,91 @@
+@import "../../utilities/style";
+$p-81: toRem(80);
+
+.container {
+  height: toRem(80);
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 $p-81;
+
+  @media only screen and (max-width: 550px) {
+    padding: 24px;
+  }
+
+  @media only screen and (max-width: $mobile) {
+    padding: 16px;
+  }
+
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0562443);
+
+  .title-app {
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 33px;
+    cursor: pointer;
+
+    @media only screen and (max-width: $mobile) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  .toggle-theme-group {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+
+    .btn-toggle-container {
+      height: 20px;
+      width: 40px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 0 3px;
+
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      .btn-toggle {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &.dark {
+    background-color: $Dark-Blue-Dark-Mode-Elements;
+    color: $White-Dark-Mode-Text-Light-Mode-Elements;
+
+    transition: background-color 0.3s ease-in;
+
+    .btn-toggle-container {
+      background-color: $White-Dark-Mode-Text-Light-Mode-Elements;
+
+      .btn-toggle {
+        background-color: $Dark-Blue-Dark-Mode-Elements;
+      }
+    }
+  }
+
+  &.light {
+    background-color: $White-Dark-Mode-Text-Light-Mode-Elements;
+    color: $Very-Dark-Blue-Light-Mode-Text;
+
+    transition: background-color 0.3s ease-in;
+
+    .btn-toggle-container {
+      background-color: $Very-Dark-Blue-Light-Mode-Text;
+
+      .btn-toggle {
+        background-color: $White-Dark-Mode-Text-Light-Mode-Elements;
+      }
+    }
+  }
+}
