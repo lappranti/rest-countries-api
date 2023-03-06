@@ -7,7 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 export class ThemeService {
   private themeSubject = new BehaviorSubject<any>(this.getLocalStoregde());
   private getLocalStoregde(): boolean {
-    return JSON.parse(localStorage.getItem('themeCountriesApp') || '').isDark;
+    // return JSON.parse(localStorage.getItem('themeCountriesApp') || '').isDark;
+    return true;
   }
 
   private setLocalstoradge(theme: boolean) {
@@ -23,6 +24,6 @@ export class ThemeService {
 
   changeTheme(theme: boolean) {
     this.themeSubject.next(theme);
-    this.setLocalstoradge(theme);
+    //this.setLocalstoradge(theme);
   }
 }
