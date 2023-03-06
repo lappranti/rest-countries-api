@@ -9,8 +9,10 @@ export class CountriesService {
   constructor(private http: HttpClient) {}
 
   getAllCountries() {
-    return this.http.get<Array<any>>('http://localhost:3000/countryList').pipe(
+    return this.http.get<Array<any>>('https://restcountries.com/v3.1/all').pipe(
       map((res) => {
+        console.log(res.length);
+
         return res;
       })
     );
