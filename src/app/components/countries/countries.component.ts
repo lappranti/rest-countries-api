@@ -8,7 +8,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 @Component({
   selector: 'app-countries',
   templateUrl: './countries.component.html',
-  styleUrls: ['./countries.component.scss'],
+  styleUrls: ['./countries.component.scss']
 })
 export class CountriesComponent implements OnInit {
   isDark!: boolean;
@@ -21,7 +21,7 @@ export class CountriesComponent implements OnInit {
     { id: 'Americas', name: 'Americas' },
     { id: 'Asia', name: 'Asia' },
     { id: 'Europe', name: 'Europe' },
-    { id: 'Oceania', name: 'Oceania' },
+    { id: 'Oceania', name: 'Oceania' }
   ];
 
   showMenuFilterRegion: boolean = false;
@@ -46,7 +46,7 @@ export class CountriesComponent implements OnInit {
 
     // When the user scrolls down 20px from the top of the document, show the button
 
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', function() {
       scrollFunction();
     });
 
@@ -64,14 +64,14 @@ export class CountriesComponent implements OnInit {
     }
 
     // When the user clicks on the button, scroll to the top of the document
-    myBtn?.addEventListener('click', function () {
+    myBtn?.addEventListener('click', function() {
       document.body.scrollTo({ top: 0, behavior: 'smooth' });
       document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
   initialisationTheme() {
-    this.themeSubscription = this.themeService.getTheme().subscribe((theme) => {
+    this.themeSubscription = this.themeService.getTheme().subscribe(theme => {
       this.isDark = theme;
     });
   }
@@ -83,7 +83,7 @@ export class CountriesComponent implements OnInit {
 
   onInputChange() {
     if (this.entrySearch.length >= 3) {
-      this.searchList = this.countryLis.filter((p) =>
+      this.searchList = this.countryLis.filter(p =>
         p.name.toLowerCase().includes(this.entrySearch.toLowerCase())
       );
     } else {
@@ -100,18 +100,31 @@ export class CountriesComponent implements OnInit {
 
   handleToggleMenu() {
     this.showMenuFilterRegion = !this.showMenuFilterRegion;
+    if (this.showMenuFilterRegion) {
+      window.addEventListener('click', this.handleOutsideClick);
+    }
   }
+
+  handleOutsideClick = (e: any) => {
+    const menu = document.querySelector('ul.element');
+    const btnToggleMenu = document.querySelector('h3.title.element');
+
+    if (e.target !== menu && e.target !== btnToggleMenu) {
+      this.showMenuFilterRegion = false;
+      window.removeEventListener('click', this.handleOutsideClick);
+    }
+  };
 
   handleSelectedRegion(region: string) {
     this.countryLis = [...this.copyCountryList];
     if (region !== 'All')
-      this.countryLis = this.countryLis.filter((p) => p.region == region);
+      this.countryLis = this.countryLis.filter(p => p.region == region);
   }
 
   getAllCountries() {
     this.countriesSubscription = this.countriesService
       .getAllCountries()
-      .subscribe((res) => {
+      .subscribe(res => {
         this.countryLis = res;
         this.copyCountryList = res;
       });

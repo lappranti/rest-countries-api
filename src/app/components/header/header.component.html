@@ -1,7 +1,7 @@
 <div class="container" [ngClass]="isDark ? 'dark' : 'light'">
   <h2 class="title-app" (click)="handleGotoHome()">Where in the world?</h2>
   <div class="toggle-theme-group">
-    <i class="bi bi-brightness-high-fill"></i>
+    <i class="bi bi-brightness-high-fill" (click)="handleToggleTheme()"></i>
     <span
       class="btn-toggle-container"
       (click)="handleToggleTheme()"
@@ -9,6 +9,6 @@
     >
       <span class="btn-toggle"></span>
     </span>
-    <i class="bi bi-moon-fill"></i>
+    <i class="bi bi-moon-fill" (click)="handleToggleTheme()"></i>
   </div>
 </div>

@@ -57,6 +57,10 @@ $p-81: toRem(80);
         border-radius: 50%;
       }
     }
+
+    i {
+      cursor: pointer;
+    }
   }
 
   &.dark {
