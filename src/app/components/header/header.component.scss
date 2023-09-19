@@ -11,8 +11,11 @@ $p-81: toRem(80);
 
   padding: 0 $p-81;
 
-  @media only screen and (max-width: 550px) {
-    padding: 24px;
+  @media only screen and (max-width: 768px) {
+    padding: 0 40px;
+  }
+  @media only screen and (max-width: 500px) {
+    padding: 0 24px;
   }
 
   @media only screen and (max-width: $mobile) {
@@ -28,7 +31,7 @@ $p-81: toRem(80);
     cursor: pointer;
 
     @media only screen and (max-width: $mobile) {
-      font-size: 16px;
+      font-size: 18px;
       line-height: 20px;
     }
   }
@@ -36,7 +39,7 @@ $p-81: toRem(80);
   .toggle-theme-group {
     display: flex;
     align-items: center;
-    column-gap: 1rem;
+    gap: 1rem;
 
     .btn-toggle-container {
       height: 20px;
@@ -51,15 +54,26 @@ $p-81: toRem(80);
 
       cursor: pointer;
 
+      position: relative;
+
       .btn-toggle {
         width: 14px;
         height: 14px;
         border-radius: 50%;
+        position: absolute;
+        transition: all 0.2s ease-in-out;
+        outline: 1px solid;
       }
     }
 
-    i {
+    button {
+      border: none;
+      background-color: transparent;
       cursor: pointer;
+    }
+
+    @media only screen and (max-width: $mobile) {
+      gap: 8px;
     }
   }
 
@@ -76,6 +90,10 @@ $p-81: toRem(80);
         background-color: $Dark-Blue-Dark-Mode-Elements;
       }
     }
+
+    i {
+      color: $White-Dark-Mode-Text-Light-Mode-Elements;
+    }
   }
 
   &.light {
@@ -90,6 +108,10 @@ $p-81: toRem(80);
       .btn-toggle {
         background-color: $White-Dark-Mode-Text-Light-Mode-Elements;
       }
+    }
+
+    i {
+      color: $Very-Dark-Blue-Light-Mode-Text;
     }
   }
 }

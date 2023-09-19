@@ -11,7 +11,7 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./countrie-detail.component.scss'],
 })
 export class CountrieDetailComponent implements OnInit {
-  isDark!: boolean;
+  isDark!: string;
   themeSubscription!: Subscription;
 
   country!: any;

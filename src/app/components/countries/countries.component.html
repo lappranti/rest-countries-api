@@ -1,4 +1,4 @@
-<div class="container" [ngClass]="isDark ? 'dark' : 'light'">
+<div class="container" [ngClass]="isDark">
   <div class="filter-search-container">
     <div class="search-group">
       <input
@@ -7,14 +7,15 @@
         pattern="^[a-zA-Zàéèç ]{1,}$"
         #input="ngModel"
         placeholder="Search for a country…"
-        (input)="onInputChange()"
-        [style.outline-color]="input.valid ? 'green' : 'red'"
+        (ngModelChange)="onInputChange()"
+        [style.outline-color]="input.valid ? '#25d366' : '#f15c6d'"
         class="input"
+        autofocus
       />
       <span class="icon"><i class="bi bi-search text"></i></span>
-      <ul class="resultat-search">
+      <ul class="resultat-search sub-element" *ngIf="entrySearch.length > 0">
         <li
-          class="element"
+          class="text"
           *ngFor="let country of searchList"
           (click)="handleShowFindedCountry(country)"
         >
@@ -24,11 +25,12 @@
       </ul>
     </div>
     <div class="filter-group">
-      <h3 class="title element" (click)="handleToggleMenu()">
+      <h3 class="title text" (click)="handleToggleMenu()">
         Filter by Region <i class="bi bi-chevron-down"></i>
       </h3>
-      <ul class="element" *ngIf="showMenuFilterRegion">
+      <ul class="sub-element" *ngIf="showMenuFilterRegion">
         <li
+          class="text"
           [id]="region.id"
           *ngFor="let region of regionList"
           (click)="handleSelectedRegion(region.id)"

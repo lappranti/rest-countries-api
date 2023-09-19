@@ -1,28 +1,26 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
-  private themeSubject = new BehaviorSubject<any>(true);
-  /* private getLocalStoregde(): boolean {
-    return JSON.parse(localStorage.getItem('themeCountriesApp') || '').isDark;
-    return true;
+  private readonly THEME_KEY = 'theme';
+  private themeSubject: BehaviorSubject<string>;
+  public theme$: Observable<string>;
+
+  constructor() {
+    const savedTheme = localStorage.getItem(this.THEME_KEY) || 'dark';
+    this.themeSubject = new BehaviorSubject<string>(savedTheme);
+    this.theme$ = this.themeSubject.asObservable();
   }
 
-  private setLocalstoradge(theme: boolean) {
-    localStorage.setItem(
-      'themeCountriesApp',
-      JSON.stringify({ isDark: theme })
-    );
-  }*/
-
-  getTheme() {
-    return this.themeSubject.asObservable();
+  getTheme(): Observable<string> {
+    return this.theme$;
   }
 
-  changeTheme(theme: boolean) {
+  setTheme(theme: string): void {
+    localStorage.setItem(this.THEME_KEY, theme);
     this.themeSubject.next(theme);
   }
 }

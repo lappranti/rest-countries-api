@@ -8,7 +8,7 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  isDark!: boolean;
+  isDark!: string;
   themeSubscription!: Subscription;
 
   constructor(private themeService: ThemeService) {}

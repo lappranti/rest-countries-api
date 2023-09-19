@@ -8,7 +8,7 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  isDark: boolean = false;
+  isDark: string = '';
 
   constructor(private themeService: ThemeService, private router: Router) {}
 
@@ -20,14 +20,15 @@ export class HeaderComponent implements OnInit {
     this.themeService.getTheme().subscribe((theme) => (this.isDark = theme));
   }
 
-  handleToggleTheme() {
-    this.isDark = !this.isDark;
+  handleToggleTheme(btnType: string) {
+    this.isDark = btnType;
+
     //Theme Service
     this.changeTheme();
   }
 
   changeTheme() {
-    this.themeService.changeTheme(this.isDark);
+    this.themeService.setTheme(this.isDark);
   }
 
   handleGotoHome() {
