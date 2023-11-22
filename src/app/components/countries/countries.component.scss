@@ -1,15 +1,21 @@
 @import "../../utilities/style";
 
 .container {
-  padding: toRem(48) toRem(80);
+  padding: toRem(48) 5%;
 
   position: relative;
+  top: 0;
 
-  @media only screen and (max-width: 768px) {
-    padding: 40px;
-  }
-  @media only screen and (max-width: 500px) {
-    padding: 40px 24px;
+  .wrapper {
+    width: 100%;
+    margin: 0 auto;
+
+    @media (min-width: 1440px) {
+      max-width: 1328px;
+    }
+    @media (min-width: 1920px) {
+      max-width: 1520px;
+    }
   }
 
   .filter-search-container {
@@ -20,15 +26,11 @@
       flex-direction: column;
       gap: 40px;
     }
-
-    @media only screen and (max-width: 768px) {
-      gap: 24px;
-    }
   }
 
   .cards-countries-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px;
 
     padding-top: 75px;
@@ -50,13 +52,12 @@
       cursor: pointer;
 
       &__image {
-        height: 180px;
-        overflow-y: hidden;
+        height: 160px;
 
-        img {
-          width: 100%;
-          border-radius: 5px 5px 0 0;
-        }
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 5px 5px 0 0;
       }
 
       &__description {
@@ -90,9 +91,7 @@
         }
       }
     }
-    @media only screen and (max-width: 1500px) {
-      grid-template-columns: repeat(4, 1fr);
-    }
+
     @media only screen and (max-width: 1200px) {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -278,18 +277,7 @@
     }
   }
 
-  .goto-top {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-
-    cursor: pointer;
-    transform: rotate(-90deg);
-
-    i {
-      font-size: 4rem;
-    }
+  @media only screen and (max-width: 600px) {
+    padding-top: 24px;
   }
 }

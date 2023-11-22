@@ -9,6 +9,9 @@ import { CountriesComponent } from './components/countries/countries.component';
 import { CountrieDetailComponent } from './components/countrie-detail/countrie-detail.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
+import { MatIconModule } from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -17,8 +20,16 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     CountriesComponent,
     CountrieDetailComponent,
+    ScrollTopComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    MatIconModule,
+    FlexLayoutModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

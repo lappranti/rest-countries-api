@@ -55,7 +55,7 @@ export class CountrieDetailComponent implements OnInit {
   }
 
   handleGoBack() {
-    this.location.back();
+    window.history.back();
   }
 
   getBasicDetail(country: any) {

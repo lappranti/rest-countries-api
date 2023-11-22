@@ -1,13 +1,10 @@
 @import "../../utilities/style";
 
 .container {
-  display: flex;
-  justify-content: center;
-
-  .wrapper {
-    width: 100%;
-    min-height: 100vh;
-  }
+  // .wrapper {
+  //   width: 100%;
+  //   min-height: 100vh;
+  // }
 
   &.dark {
     @include dark;

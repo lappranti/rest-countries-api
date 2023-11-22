@@ -2,25 +2,25 @@
 $p-81: toRem(80);
 
 .container {
-  height: toRem(80);
   width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0 $p-81;
-
-  @media only screen and (max-width: 768px) {
-    padding: 0 40px;
-  }
-  @media only screen and (max-width: 500px) {
-    padding: 0 24px;
-  }
-
-  
+  padding: 0 5%;
 
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0562443);
+
+  .wrapper {
+    height: toRem(80);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (min-width: 1440px) {
+      max-width: 1328px;
+    }
+    @media (min-width: 1920px) {
+      max-width: 1520px;
+    }
+  }
 
   .title-app {
     font-weight: 800;

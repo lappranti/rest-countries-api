@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ThemeService {
   private readonly THEME_KEY = 'theme';
   private themeSubject: BehaviorSubject<string>;
-  public theme$: Observable<string>;
+  private theme$: Observable<string>;
 
   constructor() {
     const savedTheme = localStorage.getItem(this.THEME_KEY) || 'dark';

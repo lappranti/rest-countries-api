@@ -5,7 +5,7 @@ import { CountriesComponent } from './components/countries/countries.component';
 
 const routes: Routes = [
   { path: 'countries', component: CountriesComponent },
-  { path: 'country/:id', component: CountrieDetailComponent },
+  { path: 'countries/:id', component: CountrieDetailComponent },
   { path: '**', component: CountriesComponent },
 ];
 

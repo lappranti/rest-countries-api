@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -73,7 +79,6 @@ export class CountriesComponent implements OnInit {
   initialisationTheme() {
     this.themeSubscription = this.themeService.getTheme().subscribe((theme) => {
       this.isDark = theme;
-      console.log(theme);
     });
   }
 
@@ -99,23 +104,6 @@ export class CountriesComponent implements OnInit {
     this.gotoDetailCountry(country);
   }
 
-  handleToggleMenu() {
-    this.showMenuFilterRegion = !this.showMenuFilterRegion;
-    if (this.showMenuFilterRegion) {
-      window.addEventListener('click', this.handleOutsideClick);
-    }
-  }
-
-  handleOutsideClick = (e: any) => {
-    const menu = document.querySelector('ul.element');
-    const btnToggleMenu = document.querySelector('h3.title.text');
-
-    if (e.target !== menu && e.target !== btnToggleMenu) {
-      this.showMenuFilterRegion = false;
-      window.removeEventListener('click', this.handleOutsideClick);
-    }
-  };
-
   handleSelectedRegion(region: string) {
     this.countryLis = [...this.copyCountryList];
     if (region !== 'All') {
@@ -124,6 +112,7 @@ export class CountriesComponent implements OnInit {
     if (this.entrySearch.length > 0) {
       this.onInputChange();
     }
+    this.showMenuFilterRegion = false;
   }
 
   getAllCountries() {
@@ -141,6 +130,25 @@ export class CountriesComponent implements OnInit {
   }
 
   gotoDetailCountry(country: any) {
-    this.router.navigate(['/country', country.name]);
+    this.router.navigate(['/countries', country.name]);
+  }
+
+  @ViewChild('menuContent') menuContent!: ElementRef;
+  @ViewChild('toggleMenutButton') toggleMenutButton!: ElementRef;
+
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event) {
+    if (this.showMenuFilterRegion) {
+      this.handleSidebarClickOutside(event);
+    }
+  }
+
+  handleSidebarClickOutside(event: Event) {
+    if (
+      !this.menuContent.nativeElement.contains(event.target) &&
+      !this.toggleMenutButton.nativeElement.contains(event.target)
+    ) {
+      this.showMenuFilterRegion = false;
+    }
   }
 }

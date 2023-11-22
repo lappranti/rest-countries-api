@@ -1,52 +1,54 @@
 <div class="countainer" [ngClass]="isDark">
-  <button class="goback element" (click)="handleGoBack()">
-    <i class="bi bi-arrow-left"></i><span>Back</span>
-  </button>
+  <div class="wrapper">
+    <button class="goback element" (click)="handleGoBack()">
+      <i class="bi bi-arrow-left"></i><span>Back</span>
+    </button>
 
-  <div class="country-detail-container" *ngIf="country">
-    <div class="country-image">
-      <img [src]="country.flags.svg" alt="" />
-    </div>
-    <div class="country-detail-borders text">
-      <div class="detail-container">
-        <div class="detail-1">
-          <h1 class="title text">{{ country.name }}</h1>
-          <span *ngFor="let detail of countryBasicDetails">
-            <span class="name">{{ detail.title }} :</span>
-            <span class="value">{{ detail.value }}</span>
-          </span>
-        </div>
-        <div class="detail-2">
-          <span>
-            <span class="name">Top Level Domain :</span>
-            <span class="value" *ngFor="let tld of country.topLevelDomain">{{
-              tld
-            }}</span>
-          </span>
-          <span>
-            <span class="name">Currencie :</span>
-            <span class="value" *ngFor="let currency of country.currencies">{{
-              currency.name
-            }}</span>
-          </span>
-          <span>
-            <span class="name">Languages :</span>
-            <span class="value" *ngFor="let language of country.languages">{{
-              language.name
-            }}</span>
-          </span>
-        </div>
+    <div class="country-detail-container" *ngIf="country">
+      <div class="country-image">
+        <img [src]="country.flags.svg" alt="" />
       </div>
-      <div class="border-container">
-        <span class="name">Borders Countries: </span>
-        <span class="borders">
-          <span
-            class="value element"
-            *ngFor="let border of bordersCountriesNames"
-            (click)="handleShowDetailBorderCountry(border)"
-            >{{ border }}</span
-          >
-        </span>
+      <div class="country-detail-borders text">
+        <div class="detail-container">
+          <div class="detail-1">
+            <h1 class="title text">{{ country.name }}</h1>
+            <span *ngFor="let detail of countryBasicDetails">
+              <span class="name">{{ detail.title }} :</span>
+              <span class="value">{{ detail.value }}</span>
+            </span>
+          </div>
+          <div class="detail-2">
+            <span>
+              <span class="name">Top Level Domain :</span>
+              <span class="value" *ngFor="let tld of country.topLevelDomain">{{
+                tld
+              }}</span>
+            </span>
+            <span>
+              <span class="name">Currencie :</span>
+              <span class="value" *ngFor="let currency of country.currencies">{{
+                currency.name
+              }}</span>
+            </span>
+            <span>
+              <span class="name">Languages :</span>
+              <span class="value" *ngFor="let language of country.languages">{{
+                language.name
+              }}</span>
+            </span>
+          </div>
+        </div>
+        <div class="border-container">
+          <span class="name">Borders Countries: </span>
+          <span class="borders">
+            <span
+              class="value element"
+              *ngFor="let border of bordersCountriesNames"
+              (click)="handleShowDetailBorderCountry(border)"
+              >{{ border }}</span
+            >
+          </span>
+        </div>
       </div>
     </div>
   </div>
