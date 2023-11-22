@@ -1,5 +1,4 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-scroll-top',
@@ -10,13 +9,8 @@ export class ScrollTopComponent implements OnInit {
   isTheme!: any;
   scrollHeight = 300;
 
-  constructor(private themeService: ThemeService) {}
-  ngOnInit(): void {
-    this.themeService.getTheme().subscribe((resp: any) => {
-      // this.isTheme = resp;
-      console.log(resp);
-    });
-  }
+  constructor() {}
+  ngOnInit(): void {}
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

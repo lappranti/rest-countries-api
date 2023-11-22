@@ -13,7 +13,12 @@
           class="input"
           autofocus
         />
-        <span class="icon"><i class="bi bi-search text"></i></span>
+        <span class="icon"
+          ><mat-icon
+            [ngStyle]="isDark == 'dark' ? { color: '#FFF' } : { color: '#000' }"
+            >search</mat-icon
+          ></span
+        >
         <ul class="resultat-search sub-element" *ngIf="entrySearch.length > 0">
           <li
             class="text"
@@ -31,7 +36,8 @@
           (click)="showMenuFilterRegion = !showMenuFilterRegion"
           #toggleMenutButton
         >
-          <span> Filter by Region</span> <i class="bi bi-chevron-down"></i>
+          <span> Filter by Region</span>
+          <mat-icon fxLayoutAlign="center center">expand_more</mat-icon>
         </h3>
         <ul class="sub-element" *ngIf="showMenuFilterRegion" #menuContent>
           <li
